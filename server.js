@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '.output/public', 'index.html'));
 });
 // Подключение к MongoDB
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGO_URL;
 if (!MONGODB_URI) {
   console.error("❌ MongoDB URI не указан! Проверьте переменные окружения.");
   process.exit(1); // Остановка приложения при ошибке
