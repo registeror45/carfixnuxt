@@ -34,15 +34,17 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '.output/public', 'index.html'));
 });
 // Подключение к MongoDB
-const MONGODB_URI = process.env.MONGO_URL;
+const MONGODB_URI = process.env.MONGODB_URI;
+
 if (!MONGODB_URI) {
-  console.error("❌ MongoDB URI не указан! Проверьте переменные окружения.");
-  process.exit(1); // Остановка приложения при ошибке
+  console.error("❌ ОШИБКА: Переменная MONGODB_URI не задана!");
+  console.error("Добавьте её в настройки Railway (Settings → Variables)");
+  process.exit(1); // Остановка приложения
 }
 
 mongoose.connect(MONGODB_URI)
-  .then(() => console.log("✅ MongoDB connected!"))
-  .catch(err => console.error("❌ MongoDB connection error:", err));
+  .then(() => console.log("✅ MongoDB подключена!"))
+  .catch(err => console.error("❌ Ошибка подключения к MongoDB:", err));
 
 const db = mongoose.connection;
 
