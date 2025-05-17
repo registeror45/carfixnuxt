@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '.output/public', 'index.html'));
 });
 // Подключение к MongoDB
-const MONGODB_URI = mongodb://mongo:qdNdUJkgmzyydqXnFKOzNcoZKQfUCLma@mainline.proxy.rlwy.net:36976;
+const MONGODB_URI = "mongodb://mongo:qdNdUJkgmzyydqXnFKOzNcoZKQfUCLma@mainline.proxy.rlwy.net:36976";
 mongoose.connect(MONGODB_URI).catch(err => console.error("MongoDB connection error:", err));
 
 const db = mongoose.connection;
