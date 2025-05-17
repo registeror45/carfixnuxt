@@ -35,7 +35,14 @@ app.get('*', (req, res) => {
 });
 // Подключение к MongoDB
 const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI).catch(err => console.error("MongoDB connection error:", err));
+if (!MONGODB_URI) {
+  console.error("❌ MongoDB URI не указан! Проверьте переменные окружения.");
+  process.exit(1); // Остановка приложения при ошибке
+}
+
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log("✅ MongoDB connected!"))
+  .catch(err => console.error("❌ MongoDB connection error:", err));
 
 const db = mongoose.connection;
 
