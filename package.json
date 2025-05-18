@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "nuxt generate", 
+    "build": "nuxt build && nuxt generate", 
     "start": "node server.js", 
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
