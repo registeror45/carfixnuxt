@@ -22,9 +22,4 @@ export default defineNuxtConfig({
       apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
     },
   },
-    nitro: {
-    output: {
-      publicDir: '.output/public' // Стандартный путь для Nuxt 3
-    },
-  },
 })
