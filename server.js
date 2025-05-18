@@ -29,13 +29,7 @@ app.use(cors({
 app.use(express.json({ limit: '50mb' })); // Увеличиваем лимит до 50 МБ
 app.use(express.urlencoded({ limit: '50mb', extended: true })); // Увеличиваем лимит до 50 МБ
 app.use(cookieParser());
-// Статические файлы после сборки Nuxt
-app.use(express.static(path.join(__dirname, 'dist')));
 
-// Все остальные запросы отправляем на index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
 // Подключение к MongoDB
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -62,6 +56,14 @@ app.use('/api/products', productsRouter);
 app.use('/api/baskets', basketRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/admins', adminRouter);
+
+// Статические файлы после сборки Nuxt
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Все остальные запросы отправляем на index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // Защищенные маршруты для админ-панели
 app.get('/admin/sAdmin', authMiddleware, (req, res) => {
