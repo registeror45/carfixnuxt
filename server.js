@@ -29,8 +29,13 @@ app.use(cors({
 app.use(express.json({ limit: '50mb' })); // Увеличиваем лимит до 50 МБ
 app.use(express.urlencoded({ limit: '50mb', extended: true })); // Увеличиваем лимит до 50 МБ
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '.output/public')));
-app.use('/_nuxt', express.static(path.join(__dirname, '.output/public/_nuxt')));
+// Статические файлы после сборки Nuxt
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Все остальные запросы отправляем на index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 // Подключение к MongoDB
 const MONGODB_URI = process.env.MONGODB_URI;
 
