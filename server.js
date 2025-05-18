@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 443;
 
 // Middleware
 app.use(cors({
-  origin: ['https://accomplished-luck.ru', 'https://accomplished-luck.up.railway.app'], 
+  origin: ['https://accomplished-luck.ru', 'https://carfixnuxt-production.up.railway.app'], 
   credentials: true,
 }));
 app.use(express.json({ limit: '50mb' })); // Увеличиваем лимит до 50 МБ
