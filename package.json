@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
+    "generate": "nuxt generate",
     "build": "nuxt build",
-      "generate": "nuxt generate",
+      
   "start": "node .output/server/index.mjs",  
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
