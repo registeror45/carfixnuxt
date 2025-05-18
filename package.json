@@ -4,10 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "build": "nuxt build",
-      
-  "start": "node .output/server/index.mjs",  
+    "build": "nuxt generate", // Генерирует статические файлы
+    "start": "node server.js", // Запускает Express сервер
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
