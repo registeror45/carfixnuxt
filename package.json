@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
+      "generate": "nuxt generate",
   "start": "node .output/server/index.mjs",  
-  "generate": "nuxt generate",              
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
