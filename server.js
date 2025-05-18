@@ -30,9 +30,7 @@ app.use(express.json({ limit: '50mb' })); // Увеличиваем лимит �
 app.use(express.urlencoded({ limit: '50mb', extended: true })); // Увеличиваем лимит до 50 МБ
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '.output/public')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '.output/public', 'index.html'));
-});
+app.use('/_nuxt', express.static(path.join(__dirname, '.output/public/_nuxt')));
 // Подключение к MongoDB
 const MONGODB_URI = process.env.MONGODB_URI;
 
